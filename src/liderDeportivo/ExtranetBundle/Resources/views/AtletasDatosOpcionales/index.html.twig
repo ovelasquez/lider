@@ -1,0 +1,125 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'AtletasDatosOpcionales'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<div class="row">
+
+    <div class="span8">
+        <h1>{{ 'views.index.list'|trans({'%entity%': 'AtletasDatosOpcionales'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+    </div>
+    <div class="span2">
+        {% if form_errors(filterForm) %}
+        <div class="alert alert-block alert-error fade in form-errors">
+            {{ form_errors(filterForm) }}
+        </div>
+        {% endif %}
+        &nbsp;
+    </div>
+    <div class="span2">
+        <div class="filters-right">
+            <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+                {{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                <span class="caret"></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="span12">
+        <div id="filters" class="collapse">
+
+            <form class="well" action="{{ path('atletasdatosopcionales') }}" method="get" {{ form_enctype(filterForm) }}>
+                {{ form_row(filterForm.id) }}
+                {{ form_row(filterForm.imagenCedula) }}
+                {{ form_row(filterForm.tallaFranela) }}
+                {{ form_row(filterForm.tallaPantalon) }}
+                {{ form_row(filterForm.tallaPantalonCorto) }}
+                {{ form_row(filterForm.tallaZapato) }}
+                {{ form_row(filterForm.tallaGorra) }}
+                {{ form_row(filterForm.tallaChaqueta) }}
+                {{ form_row(filterForm.tallaMedias) }}
+                {{ form_row(filterForm.altura) }}
+                {{ form_row(filterForm.peso) }}
+                {{ form_row(filterForm.tipoSangre) }}
+                {{ form_row(filterForm.alergias) }}
+                {{ form_row(filterForm.contactoNombre) }}
+                {{ form_row(filterForm.contactoTelefono) }}
+                {{ form_rest(filterForm) }}
+
+                <p>
+                    <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                    <button type="submit" name="filter_action" value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="span12">
+
+    <table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Imagencedula</th>
+            <th>Tallafranela</th>
+            <th>Tallapantalon</th>
+            <th>Tallapantaloncorto</th>
+            <th>Tallazapato</th>
+            <th>Tallagorra</th>
+            <th>Tallachaqueta</th>
+            <th>Tallamedias</th>
+            <th>Altura</th>
+            <th>Peso</th>
+            <th>Tiposangre</th>
+            <th>Alergias</th>
+            <th>Contactonombre</th>
+            <th>Contactotelefono</th>
+            <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('atletasdatosopcionales_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.imagenCedula }}</td>
+            <td>{{ entity.tallaFranela }}</td>
+            <td>{{ entity.tallaPantalon }}</td>
+            <td>{{ entity.tallaPantalonCorto }}</td>
+            <td>{{ entity.tallaZapato }}</td>
+            <td>{{ entity.tallaGorra }}</td>
+            <td>{{ entity.tallaChaqueta }}</td>
+            <td>{{ entity.tallaMedias }}</td>
+            <td>{{ entity.altura }}</td>
+            <td>{{ entity.peso }}</td>
+            <td>{{ entity.tipoSangre }}</td>
+            <td>{{ entity.alergias }}</td>
+            <td>{{ entity.contactoNombre }}</td>
+            <td>{{ entity.contactoTelefono }}</td>
+            <td>
+        <a class="btn btn-mini" href="{{ path('atletasdatosopcionales_show', { 'id': entity.id }) }}">
+            {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+        <a class="btn btn-mini" href="{{ path('atletasdatosopcionales_edit', { 'id': entity.id }) }}">
+            {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    </div>
+
+    <div class="span4">
+    {{ pagerHtml|raw }}
+    </div>
+
+        <div class="span8">
+    <a class="btn btn-primary likepaginator" href="{{ path('atletasdatosopcionales_new') }}">
+            {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} AtletasDatosOpcionales
+        </a>
+    </div>
+    </div>
+
+{% endblock %}

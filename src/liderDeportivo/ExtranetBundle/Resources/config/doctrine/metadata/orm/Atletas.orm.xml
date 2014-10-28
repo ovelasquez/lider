@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Atletas" table="atletas">
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="cedula" type="string" column="cedula" length="255" nullable="false"/>
+    <field name="nombres" type="string" column="nombres" length="255" nullable="false"/>
+    <field name="apellidos" type="string" column="apellidos" length="255" nullable="false"/>
+    <field name="fechaNacimiento" type="date" column="fecha_nacimiento" nullable="false"/>
+    <field name="genero" type="string" column="genero" length="255" nullable="false"/>
+    <field name="telefono" type="string" column="telefono" length="255" nullable="false"/>
+    <field name="email" type="string" column="email" length="255" nullable="false"/>
+    <field name="fotografia" type="string" column="fotografia" length="255" nullable="false"/>
+  </entity>
+</doctrine-mapping>

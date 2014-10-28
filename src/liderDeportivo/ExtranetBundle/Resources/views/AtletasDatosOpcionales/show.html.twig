@@ -1,0 +1,79 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.show.show'|trans({'%entity%': 'AtletasDatosOpcionales'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<h1>AtletasDatosOpcionales</h1>
+
+<form class="form-horizontal">
+    <fieldset>        <div class="control-group">
+            <label class="control-label">Id</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.id }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Imagencedula</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.imagenCedula }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Tallafranela</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.tallaFranela }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Tallapantalon</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.tallaPantalon }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Tallapantaloncorto</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.tallaPantalonCorto }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Tallazapato</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.tallaZapato }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Tallagorra</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.tallaGorra }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Tallachaqueta</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.tallaChaqueta }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Tallamedias</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.tallaMedias }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Altura</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.altura }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Peso</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.peso }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Tiposangre</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.tipoSangre }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Alergias</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.alergias }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Contactonombre</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.contactoNombre }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Contactotelefono</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.contactoTelefono }}</span>            </div>
+        </div>    </fieldset>
+</form>
+
+<div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('atletasdatosopcionales') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+    <div class="float-left">
+        <a class="btn btn-primary" href="{{ path('atletasdatosopcionales_edit', { 'id': entity.id }) }}">
+            {{ 'views.recordactions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+    <div class="float-left">
+        <form action="{{ path('atletasdatosopcionales_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

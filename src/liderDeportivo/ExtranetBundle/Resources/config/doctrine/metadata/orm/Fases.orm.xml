@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Fases" table="fases">
+    <indexes>
+      <index name="calendarios_fases_fk" columns="calendario_id"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="numeroGrupos" type="integer" column="numero_grupos" nullable="false"/>
+    <field name="sistemaJuego" type="string" column="sistema_juego" length="255" nullable="false"/>
+    <field name="puntosGanado" type="integer" column="puntos_ganado" nullable="false"/>
+    <field name="puntosEmpatados" type="integer" column="puntos_empatados" nullable="false"/>
+    <field name="puntosPerdidos" type="integer" column="puntos_perdidos" nullable="false"/>
+    <field name="puntosForfeit" type="integer" column="puntos_forfeit" nullable="false"/>
+    <field name="totalClasificadosAuto" type="integer" column="total_clasificados_auto" nullable="false"/>
+    <field name="totalClasificadosManual" type="integer" column="total_clasificados_manual" nullable="false"/>
+    <many-to-one field="calendario" target-entity="Calendarios">
+      <join-columns>
+        <join-column name="calendario_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,73 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.show.show'|trans({'%entity%': 'Categorias'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+
+<h1>Categorias</h1>
+
+<form class="form-horizontal">
+    <fieldset>        <div class="control-group">
+            <label class="control-label">Id</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.id }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Nombre</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.nombre }}</span>            </div>
+        </div>        <div class="control-group">
+            <label class="control-label">Logo</label>
+            <div class="controls">                <span class="input-xlarge uneditable-input">{{ entity.logo }}</span>            </div>
+        </div>    </fieldset>
+</form>
+
+<div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('categorias') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+    <div class="float-left">
+        <a class="btn btn-primary" href="{{ path('categorias_edit', { 'id': entity.id }) }}">
+            {{ 'views.recordactions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+        </a>
+    </div>
+    <div class="float-left">
+        <form action="{{ path('categorias_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+        </form>
+    </div>
+</div>
+            
+            <div class="span10"> 
+        <h2>Atletas</h2>
+
+        <table class="table table-striped table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th>#</th>                    
+                    <th>Atletas</th>
+                    <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for atleta in atletas %}
+                    <tr>
+                        <td><a href="{{ path('atletas_show', { 'id': atleta.id }) }}">{{ atleta.id }}</a></td>                        
+                        <td><a href="{{ path('atletas_show', { 'id': atleta.id }) }}">{{ atleta.atleta }}</a></td>
+                        <td>
+                            <a class="btn btn-mini" href="{{ path('atletas_show', { 'id': atleta.id }) }}">
+                                {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                            </a>
+                            <a class="btn btn-mini" href="{{ path('atletas_edit', { 'id': atleta.id }) }}">
+                                {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                            </a>            
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

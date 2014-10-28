@@ -1,0 +1,7 @@
+extranet:
+    resource: "@ExtranetBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+

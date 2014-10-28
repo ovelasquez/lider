@@ -1,0 +1,104 @@
+{% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ 'views.index.list'|trans({'%entity%': 'Ligas'}, 'JordiLlonchCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block entidad %}  Ligas 
+    <a class="btn btn-primary" href="{{ path('ligas_new') }}">
+        {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+    </a>{% endblock %}
+
+    {% block page %}
+        <div class="row">
+            <!--
+           
+            
+                    <div class="col-lg-10 col-lg-offset-1">
+            {% if form_errors(filterForm) %}
+                <div class="alert alert-block alert-error fade in form-errors">
+                {{ form_errors(filterForm) }}
+            </div>
+            {% endif %}
+            &nbsp;
+        </div>
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="filters-right">
+                <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+            {{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+            <span class="caret"></span>
+        </a>
+        </div>
+        </div>
+        
+        <div class="col-lg-10 col-lg-offset-1">
+        <div id="filters" class="collapse">
+        
+        <form class="well" action="{{ path('ligas') }}" method="get" {{ form_enctype(filterForm) }}>
+            {{ form_row(filterForm.id) }}
+            {{ form_row(filterForm.nombre) }}
+            {{ form_rest(filterForm) }}
+        
+            <p>
+                <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                <button type="submit" name="filter_action" value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+            </p>
+        </form>
+        </div>
+        </div>
+       
+            -->
+
+            <div class="col-lg-10 col-lg-offset-1">           
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        {{ 'views.index.list'|trans({'%entity%': 'Ligas'}, 'JordiLlonchCrudGeneratorBundle') }}
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+
+                        <div class="table-responsive">
+                            <table class="table" id="dataTables-ligas">
+                                <thead>
+                                    <tr role="row">
+                                        <th>#</th>
+                                        <th>Nombre</th>
+                                        <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for entity in entities %}
+                                        <tr class="odd gradeX">
+                                            <td><a href="{{ path('ligas_show', { 'id': entity.id }) }}">{{ loop.index }}</a></td>
+                                            <td>{{ entity.nombre }}</td>                                    
+                                            <td class="center">
+                                                <a class="btn btn-mini" href="{{ path('ligas_show', { 'id': entity.id }) }}">
+                                                    {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                                                </a>                                          
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                            <div>
+                                {{ pagerHtml|raw }}
+
+                            </div>
+
+
+
+                        </div>
+                        <!-- /.table-responsive -->
+
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-10 -->
+
+        </div>
+
+
+    {% endblock %}

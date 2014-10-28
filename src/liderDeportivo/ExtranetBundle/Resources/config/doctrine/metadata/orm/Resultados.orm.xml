@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Resultados" table="resultados">
+    <indexes>
+      <index name="resultados_disciplinas_resultados_fk" columns="resultado_disciplina_id"/>
+      <index name="encuentro_equipo_resultados_fk" columns="encuentro_equipo_id"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="valor" type="integer" column="valor" nullable="false"/>
+    <many-to-one field="resultadoDisciplina" target-entity="ResultadosDisciplinas">
+      <join-columns>
+        <join-column name="resultado_disciplina_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="encuentroEquipo" target-entity="EncuentroEquipo">
+      <join-columns>
+        <join-column name="encuentro_equipo_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

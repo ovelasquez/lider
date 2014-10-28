@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AtletasDatosOpcionales" table="atletas_datos_opcionales">
+    <indexes>
+      <index name="atletas_atletas_datos_opcionales_fk" columns="atleta_id"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="imagenCedula" type="string" column="imagen_cedula" length="255" nullable="false"/>
+    <field name="tallaFranela" type="string" column="talla_franela" length="10" nullable="false"/>
+    <field name="tallaPantalon" type="string" column="talla_pantalon" length="10" nullable="false"/>
+    <field name="tallaPantalonCorto" type="string" column="talla_pantalon_corto" length="10" nullable="false"/>
+    <field name="tallaZapato" type="string" column="talla_zapato" length="10" nullable="false"/>
+    <field name="tallaGorra" type="string" column="talla_gorra" length="10" nullable="false"/>
+    <field name="tallaChaqueta" type="string" column="talla_chaqueta" length="10" nullable="false"/>
+    <field name="tallaMedias" type="string" column="talla_medias" length="10" nullable="false"/>
+    <field name="altura" type="decimal" column="altura" precision="10" scale="0" nullable="false"/>
+    <field name="peso" type="decimal" column="peso" precision="10" scale="0" nullable="false"/>
+    <field name="tipoSangre" type="string" column="tipo_sangre" length="10" nullable="false"/>
+    <field name="alergias" type="text" column="alergias" nullable="false"/>
+    <field name="contactoNombre" type="string" column="contacto_nombre" length="255" nullable="false"/>
+    <field name="contactoTelefono" type="string" column="contacto_telefono" length="255" nullable="false"/>
+    <many-to-one field="atleta" target-entity="Atletas">
+      <join-columns>
+        <join-column name="atleta_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

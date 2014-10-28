@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Encuentros" table="encuentros">
+    <indexes>
+      <index name="calendarios_encuentros_fk" columns="calendario_id"/>
+      <index name="fases_encuentros_fk" columns="fase_id"/>
+      <index name="grupos_encuentros_fk" columns="grupo_id"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fecha" type="date" column="fecha" nullable="false"/>
+    <many-to-one field="fase" target-entity="Fases">
+      <join-columns>
+        <join-column name="fase_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="calendario" target-entity="Calendarios">
+      <join-columns>
+        <join-column name="calendario_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="grupo" target-entity="Grupos">
+      <join-columns>
+        <join-column name="grupo_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
